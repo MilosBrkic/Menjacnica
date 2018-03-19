@@ -14,7 +14,10 @@ public class Kurs {
 	}
 	
 	public void setProdajni(double prodajni) {
-		this.prodajni = prodajni;
+		if(prodajni>0)
+			this.prodajni = prodajni;
+		else
+			System.out.println("Nepravilan unos");
 	}
 	
 	public double getKupovni() {
@@ -22,7 +25,10 @@ public class Kurs {
 	}
 	
 	public void setKupovni(double kupovni) {
-		this.kupovni = kupovni;
+		if(kupovni>0)
+			this.kupovni = kupovni;
+		else
+			System.out.println("Nepravilan unos");
 	}
 	
 	public double getSrednji() {
@@ -30,7 +36,10 @@ public class Kurs {
 	}
 	
 	public void setSrednji(double srednji) {
-		this.srednji = srednji;
+		if(srednji>0)
+			this.srednji = srednji;
+		else
+			System.out.println("Nepravilan unos");
 	}
 	
 	public GregorianCalendar getDatum() {
@@ -38,7 +47,10 @@ public class Kurs {
 	}
 	
 	public void setDatum(GregorianCalendar datum) {
-		this.datum = datum;
+		if(datum!=null)
+			this.datum = datum;
+		else
+			System.out.println("Nepravilan unos");
 	}
 
 	@Override

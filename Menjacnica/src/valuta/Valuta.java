@@ -15,7 +15,10 @@ public class Valuta {
 	}
 	
 	public void setNaziv(String naziv) {
-		this.naziv = naziv;
+		if(naziv!=null && !naziv.isEmpty())
+			this.naziv = naziv;
+		else
+			System.out.println("Nepravilan unos");
 	}
 	
 	public String getSkracenica() {
@@ -23,7 +26,10 @@ public class Valuta {
 	}
 	
 	public void setSkracenica(String skracenica) {
-		this.skracenica = skracenica;
+		if(skracenica!=null && !skracenica.isEmpty())
+			this.skracenica = skracenica;
+		else
+			System.out.println("Nepravilan unos");
 	}
 	
 	public LinkedList<Kurs> getKursevi() {
@@ -31,7 +37,10 @@ public class Valuta {
 	}
 	
 	public void setKursevi(LinkedList<Kurs> kursevi) {
-		this.kursevi = kursevi;
+		if(kursevi.isEmpty())
+			System.out.println("Prazna lista");
+		else
+			this.kursevi = kursevi;
 	}
 
 	@Override

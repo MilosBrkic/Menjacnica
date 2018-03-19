@@ -14,7 +14,10 @@ public class Menjacnica {
 	}
 
 	public void setValute(LinkedList<Valuta> valute) {
-		this.valute = valute;
+		if(valute.isEmpty())
+			System.out.println("Lista je prazna");
+		else
+			this.valute = valute;
 	}
 
 	@Override
