@@ -56,21 +56,60 @@ public class Menjacnica implements InterfejsMenjacnica {
 
 	@Override
 	public void dodavnjeKursa(String valuta, Kurs kurs) {
-		// TODO Auto-generated method stub
-		
+		for(int i=0; i<valute.size();i++)
+		{
+			if(valute.get(i).getNaziv().equals(valuta)) {			
+				valute.get(i).getKursevi().add(kurs);
+				System.out.println("Kurs je uspesno dodat");
+				return;
+			}
+		}
+		System.out.println("Ne postoji valuta pod tim nazivom");		
 	}
 
 	@Override
 	public void brisanjeKursa(String valuta, GregorianCalendar datum) {
-		// TODO Auto-generated method stub
-		
+		GregorianCalendar pom;
+		for(int i=0; i<valute.size();i++)
+		{
+			if(valute.get(i).getNaziv().equals(valuta)) {
+				Valuta v = valute.get(i);
+				for(int j=0; j<v.getKursevi().size(); j++) {
+					pom=v.getKursevi().get(j).getDatum();
+					if(pom.get(GregorianCalendar.YEAR)==datum.get(GregorianCalendar.YEAR)
+					&& pom.get(GregorianCalendar.MONTH)==datum.get(GregorianCalendar.MONTH)
+					&& pom.get(GregorianCalendar.DAY_OF_MONTH)==datum.get(GregorianCalendar.DAY_OF_MONTH)) {
+						v.getKursevi().remove(j);
+						System.out.println("Kurs je uspesno izbrisan");
+						return;
+					}
+				}
+				System.out.println("Ne postoji kurs za uneti datum");
+				return;
+			}
+		}
+		System.out.println("Ne postoji valuta pod tim nazivom");	
 	}
 
 	@Override
 	public Kurs pronalazenjeKursa(String valuta, GregorianCalendar datum) {
-		// TODO Auto-generated method stub
-		return null;
+		GregorianCalendar pom;
+		for(int i=0; i<valute.size();i++)
+		{
+			if(valute.get(i).getNaziv().equals(valuta)) {
+				Valuta v = valute.get(i);
+				for(int j=0; j<v.getKursevi().size(); j++) {
+					pom=v.getKursevi().get(j).getDatum();
+					if(pom.get(GregorianCalendar.YEAR)==datum.get(GregorianCalendar.YEAR)
+					&& pom.get(GregorianCalendar.MONTH)==datum.get(GregorianCalendar.MONTH)
+					&& pom.get(GregorianCalendar.DAY_OF_MONTH)==datum.get(GregorianCalendar.DAY_OF_MONTH)) {
+						return v.getKursevi().get(j);
+					}
+				}
+				throw new RuntimeException("Ne postoji kurs za uneti datum");
+			}
+		}
+		throw new RuntimeException("Ne postoji valuta pod tim nazivom");
 	}
-	
 	
 }
