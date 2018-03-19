@@ -56,8 +56,26 @@ public class Menjacnica implements InterfejsMenjacnica {
 
 	@Override
 	public void dodavnjeKursa(String valuta, Kurs kurs) {
-		// TODO Auto-generated method stub
-		
+		GregorianCalendar pom;
+		for(int i=0; i<valute.size();i++)
+		{
+			if(valute.get(i).getNaziv().equals(valuta)) {
+				Valuta v = valute.get(i);
+				for(int j=0; j<v.getKursevi().size(); j++) {
+					pom=v.getKursevi().get(j).getDatum();
+					if(pom.get(GregorianCalendar.YEAR)==kurs.getDatum().get(GregorianCalendar.YEAR)
+					&& pom.get(GregorianCalendar.MONTH)==kurs.getDatum().get(GregorianCalendar.MONTH)
+					&& pom.get(GregorianCalendar.DAY_OF_MONTH)==kurs.getDatum().get(GregorianCalendar.DAY_OF_MONTH)) {
+						System.out.println("Kurs sa istim datumom vec postoji");
+						return;
+					}
+				}
+				valute.get(i).getKursevi().add(kurs);
+				System.out.println("Kurs je uspesno dodat");
+				return;
+			}
+		}
+		System.out.println("Ne postoji valuta pod tim nazivom");	
 	}
 
 	@Override
